@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstroZoeira: O Guia de Sobrevivência do Zodíaco</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+        :root {
+            --bg-body: #f4f7f6;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+            
+            /* Cores Vibrantes das Seções */
+            --cor-sec1: #8e44ad; /* Roxo Curiosidades */
+            --cor-sec2: #ff4757; /* Vermelho/Rosa Amor */
+            --cor-sec3: #ffa502; /* Laranja Tretas */
+            --cor-sec4: #1e90ff; /* Azul Ama/Odeia */
+            --cor-sec5: #00cec9; /* Turquesa Planetas */
+            
+            /* Cores do Rodapé */
+            --cor-amazon: #ff9900;
+            --cor-pix: #32BCAD;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 100%;
+            background: #fff;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            padding-bottom: 40px;
+        }
+
+        /* --- Cabeçalho Cativante --- */
+        .hero {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 2.8em;
+            margin: 0 0 15px 0;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 600px;
+            background: rgba(0,0,0,0.15);
+            padding: 15px;
+            border-radius: 15px;
+            font-weight: 600;
+        }
+
+        /* --- Títulos das Seções --- */
+        h2 {
+            font-size: 1.8em;
+            text-align: center;
+            margin: 40px 20px 20px;
+            padding: 15px;
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* --- Estilo dos Acordeões (Details) --- */
+        .secao-wrapper { padding: 0 20px; margin-bottom: 30px; }
+
+        details {
+            margin-bottom: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border-left: 8px solid transparent;
+            background: #fafafa;
+        }
+
+        details:hover { transform: translateX(5px); }
+
+        summary {
+            font-weight: 700;
+            font-size: 1.2em;
+            padding: 20px;
+            cursor: pointer;
+            outline: none;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+        }
+
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: "👇"; font-size: 1.2em; transition: 0.3s; }
+        details[open] summary::after { transform: rotate(180deg); }
+
+        .content-box {
+            padding: 20px;
+            background: #fff;
+            border-top: 1px dashed #ddd;
+            line-height: 1.6;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        ul { padding-left: 20px; margin: 0; }
+        li { margin-bottom: 8px; }
+
+        /* --- Cores Dinâmicas das Seções --- */
+        .secao-1 h2 { background-color: var(--cor-sec1); }
+        .secao-1 details { border-left-color: var(--cor-sec1); }
+        
+        .secao-2 h2 { background-color: var(--cor-sec2); }
+        .secao-2 details { border-left-color: var(--cor-sec2); }
+
+        .secao-3 h2 { background-color: var(--cor-sec3); }
+        .secao-3 details { border-left-color: var(--cor-sec3); }
+
+        .secao-4 h2 { background-color: var(--cor-sec4); }
+        .secao-4 details { border-left-color: var(--cor-sec4); }
+
+        .secao-5 h2 { background-color: var(--cor-sec5); }
+        
+        /* --- Área de Planetas --- */
+        .planeta-box {
+            background: #f0fdfc;
+            border: 3px solid var(--cor-sec5);
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 0 20px;
+        }
+
+        select, button {
+            width: 100%;
+            max-width: 300px;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+            font-weight: 600;
+        }
+
+        select { border: 2px solid var(--cor-sec5); cursor: pointer; }
+        
+        button {
+            background-color: var(--cor-sec5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 206, 201, 0.4);
+        }
+
+        button:hover { transform: scale(1.05); background-color: #01a3a4; }
+
+        #resultado-planeta {
+            margin-top: 20px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+            color: var(--text-dark);
+            display: none;
+            font-weight: 600;
+        }
+
+        /* --- Rodapé Chamativo --- */
+        .footer {
+            margin-top: 60px;
+            padding: 40px 20px;
+            background: #2f3640;
+            color: white;
+            text-align: center;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+        }
+
+        .cta-title {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            color: #f1f2f6;
+        }
+
+        .amazon-card {
+            background: linear-gradient(135deg, #ff9900, #ffb84d);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(255, 153, 0, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        .amazon-link {
+            color: #111;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.5em;
+            display: block;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .pix-card {
+            background: linear-gradient(135deg, #32BCAD, #1abc9c);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(50, 188, 173, 0.3);
+            display: inline-block;
+            border: 3px dashed #fff;
+        }
+
+        .pix-card h3 { margin: 0 0 10px 0; font-size: 1.3em; }
+        .pix-card p { margin: 0; font-size: 1.1em; font-weight: 800; user-select: all; }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2em; }
+            .hero p { font-size: 1em; }
+            select, button { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="hero">
+        <h1>🔮 AstroZoeira</h1>
+        <p>Cansado de culpar seu mapa astral por todos os seus problemas? Descubra os podres, as manias e as maiores tretas do seu signo (e do crush). <strong>Rápido, direto e sem enrolação cósmica!</strong> 🚀</p>
+    </div>
+
+    <div id="app-content"></div>
+
+    <!-- Planetas -->
+    <div class="secao-5">
+        <h2>🪐 Astrologia Turbo: Planeta + Signo</h2>
+        <div class="planeta-box">
+            <p>Junte um planeta com um signo e descubra a química dessa mistura doida!</p>
+            <select id="select-planeta">
+                <option value="" disabled selected>Escolha o Planeta</option>
+                <option value="Sol (A Essência/Ego)">Sol (A Essência/Ego)</option>
+                <option value="Lua (O Coração e o Drama)">Lua (O Coração e o Drama)</option>
+                <option value="Mercúrio (A Língua Solta)">Mercúrio (A Língua Solta)</option>
+                <option value="Vênus (O Modo Conquista)">Vênus (O Modo Conquista)</option>
+                <option value="Marte (A Força do Ódio/Ação)">Marte (A Força do Ódio/Ação)</option>
+            </select>
+            <select id="select-signo-planeta">
+                <option value="" disabled selected>Escolha o Signo</option>
+            </select>
+            <br>
+            <button onclick="combinarPlanetaSigno()">🔮 Revelar Mistura Cósmica</button>
+            <div id="resultado-planeta"></div>
+        </div>
+    </div>
+
+    <!-- Rodapé Super Chamativo -->
+    <div class="footer">
+        <div class="cta-title">🚨 Quer dominar os astros de verdade?</div>
+        
+        <div class="amazon-card">
+            <a href="https://www.amazon.com.br/dp/B0D2PNKTB1" target="_blank" class="amazon-link">
+                📚 CLIQUE AQUI: Conheça nosso Livro na Amazon! ⭐
+            </a>
+            <p style="color:#111; margin-top:10px; font-weight:600;">O guia definitivo que faltava na sua estante.</p>
+        </div>
+
+        <div class="pix-card">
+            <h3>💸 Curtiu o app? Pague um café pras estrelas!</h3>
+            <p>Contribuição Pix / Paypal:<br><br>👉 biofilmes@gmail.com 👈</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const signosData = [
+        {
+            nome: "Áries", emoji: "♈",
+            curiosidades: ["Primeiro signo do zodíaco, ou seja, o bebê chorão.", "Age primeiro, pensa depois (se sobrar tempo).", "Competitivo até em jogo de par ou ímpar.", "Esquece a briga 5 minutos depois que gritou.", "Sincericídio é seu talento natural.", "Pavio mais curto que de bombinha.", "Odeia receber ordens de qualquer ser vivo.", "Líder nato, quer mandar na turma toda.", "Tem energia sobrando, precisa malhar ou surtar.", "Defende os amigos com unhas e dentes."],
+            amor: "Gosta da emoção da caça. Nunca seja fácil demais, senão ele entedia. Convide pra pular de paraquedas e não sufoque!",
+            incompativel: "Câncer (muito drama) e Capricórnio (muita regra).",
+            ama: ["Ganhar qualquer coisa", "Esportes e ação", "Ser o chefe"],
+            odeia: ["Gente lerda na rua", "Ficar em filas", "Gente dizendo 'calma'"]
+        },
+        {
+            nome: "Touro", emoji: "♉",
+            curiosidades: ["Signo da fome, do sono e do boleto pago.", "Teimoso nível mula empacada.", "Extremamente fiel (quando finalmente decide).", "Só sai de casa se for pra comer bem ou ganhar dinheiro.", "Paciência de monge tibetano, até que explode como vulcão.", "Aprecia lençóis macios e pijamas caros.", "Ciúme? Imagina... Só cuida do que é dele.", "Tem o melhor gosto musical da roda.", "Guarda dinheiro até debaixo do colchão.", "Odeia mudanças que não foram planejadas em 1998."],
+            amor: "A chave do coração é o estômago. Compre comida boa, dê presentes caros, passe segurança e não apresse o ritmo dele.",
+            incompativel: "Leão (briga de egos) e Aquário (muito rebelde).",
+            ama: ["Comida gourmet", "Conta bancária gorda", "Ficar na cama"],
+            odeia: ["Pressa e correria", "Gastar dinheiro à toa", "Mudança de planos"]
+        },
+        {
+            nome: "Gêmeos", emoji: "♊",
+            curiosidades: ["A rádio fofoca ambulante do zodíaco.", "Muda de ideia no meio da própria frase.", "Fica entediado em 3, 2, 1...", "Fala com o papa e com o morador de rua com a mesma naturalidade.", "Sabe um pouco de tudo (especialista em coisas inúteis).", "Namora um, flerta com três e chora por um quarto.", "Nunca cala a boca.", "Mestre em dar 'perdido' nas festas.", "Ama descobrir um segredo cabeludo.", "Alma da festa, até a bateria social acabar do nada."],
+            amor: "Seja inteligente e engraçado. O flerte mental é o que os prende. Nunca mande 'bom dia, tudo bem?' todo dia igual.",
+            incompativel: "Virgem (muita crítica) e Peixes (muito choro).",
+            ama: ["Fofoca quentinha", "Viajar de fim de semana", "Gente interessante"],
+            odeia: ["Rotina monótona", "Gente sem assunto", "Ficar sozinho"]
+        },
+        {
+            nome: "Câncer", emoji: "♋",
+            curiosidades: ["Metade lágrima, metade rancor.", "Lembra do que você fez com ele no dia 12 de março de 2014.", "A mãe/pai do grupo (leva até remédio na bolsa).", "Acha que ninguém o ama o suficiente.", "Tem um sexto sentido absurdo.", "Fica de mal e faz chantagem emocional sutil.", "Ama um filme com cobertor e pipoca.", "Coração gigante, mas esconde dentro de uma carapaça dura.", "Guarda cacarecos e lembrancinhas de 10 anos atrás.", "Extremamente fofo quando não tá surtando."],
+            amor: "Precisa de garantias diárias de amor. Mande mensagem fofa, abrace, beije e nunca faça piada dos sentimentos dele.",
+            incompativel: "Áries (muito bruto) e Libra (muito indeciso).",
+            ama: ["Família e amigos em casa", "Comida caseira", "Abraço de urso"],
+            odeia: ["Gente insensível", "Despedidas", "Críticas ao seu modo de ser"]
+        },
+        {
+            nome: "Leão", emoji: "♌",
+            curiosidades: ["O sol gira em torno dele (pelo menos ele acha).", "A autoestima de milhões (mesmo devendo o aluguel).", "Extremamente leal e generoso com os parças.", "Se ofende se você não notar que ele cortou 1cm de cabelo.", "Não sabe ser discreto, ri alto e fala gesticulando.", "Adora um drama digno de novela mexicana.", "Odeia comprar coisa barata ou falsificada.", "Quando entra no recinto, quer tapete vermelho.", "Líder natural, mas não sabe receber ordem.", "Coração de ouro escondido atrás do ego gigante."],
+            amor: "Trate-o como a realeza. Elogie muito, pague bons drinks, mostre orgulho de estar com ele. Exija o mesmo de volta.",
+            incompativel: "Touro (muito cabeça dura) e Escorpião (muito mistério).",
+            ama: ["Elogios sinceros", "Marcas caras/luxo", "Ser o centro das atenções"],
+            odeia: ["Ser ignorado", "Mesquinharia", "Gente que tenta ofuscá-lo"]
+        },
+        {
+            nome: "Virgem", emoji: "♍",
+            curiosidades: ["O detetive do zodíaco, acha erro onde não tem.", "Tem uma planilha de Excel pra vida amorosa.", "Gosta de limpar a casa quando está estressado.", "Critica você porque te ama (juro!).", "Ansiedade é o seu segundo nome.", "Não suporta erro de português e atrasos.", "Guarda o dinheiro e as emoções com a mesma segurança.", "Prestativo ao extremo, conserta sua vida se deixar.", "Repara na sujeira do sapato dos outros.", "Secretamente se acha melhor que todo mundo."],
+            amor: "Chegue no horário, seja limpinho e tenha metas de vida. Prove seu amor ajudando a lavar a louça em vez de poesia.",
+            incompativel: "Gêmeos (muita bagunça) e Sagitário (muita irresponsabilidade).",
+            ama: ["Listas e planilhas", "Gente pontual", "Sentir que é útil"],
+            odeia: ["Bagunça", "Gente dramática", "Gente que se faz de burra"]
+        },
+        {
+            nome: "Libra", emoji: "♎",
+            curiosidades: ["O indeciso crônico (não sabe nem o que vai almoçar).", "Flerta até com a parede por esporte.", "Odeia brigas, prefere engolir sapo com elegância.", "Tem um senso estético absurdo, só anda arrumado.", "Gosta de namorar, odeia ficar solteiro.", "Maria vai com as outras pra evitar confusão.", "Mestre em dar conselhos que não segue.", "Sempre tenta agradar gregos e troianos.", "Julga as roupas dos outros em silêncio.", "Charme natural para conseguir favores."],
+            amor: "Faça tudo parecer um filme de romance. Traga flores, seja educado e decida o restaurante por ele para não estressá-lo.",
+            incompativel: "Câncer (muita cobrança) e Capricórnio (frio demais).",
+            ama: ["Estética e beleza", "Harmonia no grupo", "Presentes românticos"],
+            odeia: ["Tomar decisões difíceis", "Gente barraqueira", "Ficar sozinho"]
+        },
+        {
+            nome: "Escorpião", emoji: "♏",
+            curiosidades: ["Parece FBI, descobre até o que você não fez.", "A intensidade em forma de gente (tudo é 8 ou 80).", "Se você pisar na bola, ele vai lembrar em 2050.", "Olhar que atravessa a alma.", "Sabe guardar um segredo até o túmulo.", "Muito desconfiado, precisa testar você primeiro.", "Ciúme possessivo disfarçado de 'cuidado'.", "Humor ácido e sarcasmo de alta qualidade.", "Adora assuntos tabus e mistérios.", "Quando ama, entrega a própria vida."],
+            amor: "Seja 100% leal e transparente. Mentiu uma vez? Fim de jogo. Eles querem intimidade absoluta, física e emocional.",
+            incompativel: "Leão (os dois querem o poder) e Aquário (frio demais pra eles).",
+            ama: ["Segredos", "Lealdade canina", "Assuntos profundos"],
+            odeia: ["Mentira e falsidade", "Conversa fiada/superficial", "Que mexam nas coisas dele"]
+        },
+        {
+            nome: "Sagitário", emoji: "♐",
+            curiosidades: ["A pessoa que ri no enterro porque lembrou de um meme.", "Sincero até ofender (e não pede desculpas).", "Não para em casa, o passaporte tá sempre na mão.", "Exagerado: não comprou um pão, comprou a padaria.", "Odeia quem tenta prendê-lo ou fazer ciúmes.", "Sempre tem a melhor história de bebedeira pra contar.", "Mestre em sumir do mapa e voltar agindo normal.", "Acredita piamente que tudo vai dar certo no final.", "Filósofo de boteco depois de duas cervejas.", "Detesta rotina mais que o diabo foge da cruz."],
+            amor: "Dê espaço. Muito espaço. Aceite ser o parceiro de aventuras, ria das piadas dele e não cobre horário de volta.",
+            incompativel: "Virgem (prende demais) e Peixes (cobra afeto demais).",
+            ama: ["Viagens de última hora", "Liberdade", "Aprender coisas novas"],
+            odeia: ["Gente grudenta", "Pessimismo", "Rotina burocrática"]
+        },
+        {
+            nome: "Capricórnio", emoji: "♑",
+            curiosidades: ["Nasceu com 40 anos de idade e pagando boleto.", "Odeia quem faz drama sem ter problema real.", "Foca tanto no topo da montanha que esquece a vista.", "Seu coração é um cofre (tem senha e biometria).", "Adora reclamar do trabalho enquanto trabalha mais.", "Humor mais seco que o deserto do Saara.", "Gosta de coisas caras, duráveis e de marca.", "Demonstra amor pagando a sua conta ou te ajudando num projeto.", "Não tem paciência pra joguinhos emocionais.", "Mais fiel que cachorro (se você merecer)."],
+            amor: "Mostre que você tem futuro e não é um encosto. Não faça show em público. Ganhe o respeito dele e ele será todo seu.",
+            incompativel: "Áries (muita pressa) e Libra (muito indeciso).",
+            ama: ["Dinheiro na conta", "Tradição e estabilidade", "Gente eficiente"],
+            odeia: ["Gente preguiçosa", "Exposições ridículas", "Gastar atoa"]
+        },
+        {
+            nome: "Aquário", emoji: "♒",
+            curiosidades: ["O 'do contra' oficial do rolê.", "Sabe a solução pra fome mundial, mas esquece onde pôs a chave.", "Zero apego emocional (parece um cubo de gelo).", "Defende causas que ninguém entende.", "Valoriza mais a amizade do que o namoro.", "Odeia que digam o que é 'certo' ou 'normal'.", "Vive no ano de 3050 em sua cabeça.", "Some no WhatsApp porque 'esqueceu' (mentira, não tava afim).", "Super criativo, inventa moda o tempo todo.", "Gosta de chocar a família conservadora."],
+            amor: "Seja o melhor amigo dele. Não faça cobranças tipo 'por que você não me ligou?'. Ame-o sem tentar mudar seu jeito louco.",
+            incompativel: "Touro (muito possessivo) e Escorpião (muito intenso/cobrador).",
+            ama: ["Liberdade absoluta", "Tecnologia e inovação", "Conversas intelectuais"],
+            odeia: ["Regras bobas", "Gente carente", "Pensamento quadrado"]
+        },
+        {
+            nome: "Peixes", emoji: "♓",
+            curiosidades: ["Tem doutorado em criar ilusões e sofrer por elas.", "O WiFi espiritual mais forte do zodíaco.", "Chora vendo propaganda de margarina.", "Não consegue dizer NÃO pra ninguém.", "Foge dos problemas fingindo que eles não existem.", "Sempre adota o cachorro de rua ou o amigo problemático.", "Dorme pra esquecer a vida.", "Romântico nível Disney.", "Esquece as coisas em 3 segundos.", "Um amor de pessoa, mas se faz muito de vítima."],
+            amor: "Seja a âncora gentil na vida dele. Demonstre empatia, seja doce, compreensivo e mergulhe nos delírios românticos dele.",
+            incompativel: "Gêmeos (muita razão) e Sagitário (muito grosseiro).",
+            ama: ["Dormir e sonhar", "Romance meloso", "Ajudar os 'feridos'"],
+            odeia: ["Gente cruel e fria", "Encarar a realidade nua e crua", "Críticas pesadas"]
+        }
+    ];
+
+    const appContent = document.getElementById('app-content');
+    const selectSignoPlaneta = document.getElementById('select-signo-planeta');
+
+    // Função para renderizar as seções
+    function renderSection(idClass, title, contentCallback) {
+        let html = `<div class="${idClass} secao-wrapper"><h2>${title}</h2>`;
+        signosData.forEach(signo => { html += contentCallback(signo); });
+        html += `</div>`;
+        return html;
+    }
+
+    let finalHTML = '';
+
+    // Seção 1
+    finalHTML += renderSection("secao-1", "🔮 10 Curiosidades (Os Podres)", signo => `
+        <details>
+            <summary>${signo.emoji} As verdades sobre ${signo.nome}</summary>
+            <div class="content-box">
+                <ul>${signo.curiosidades.map(c => `<li>${c}</li>`).join('')}</ul>
+            </div>
+        </details>
+    `);
+
+    // Seção 2
+    finalHTML += renderSection("secao-2", "💘 Como domar no Amor", signo => `
+        <details>
+            <summary>${signo.emoji} Namorando ${signo.nome}</summary>
+            <div class="content-box">
+                <p><strong>Dica de Ouro:</strong> ${signo.amor}</p>
+            </div>
+        </details>
+    `);
+
+    // Seção 3
+    finalHTML += renderSection("secao-3", "🧨 Tretas & Incompatibilidades", signo => `
+        <details>
+            <summary>${signo.emoji} ${signo.nome} não suporta...</summary>
+            <div class="content-box">
+                <p><strong>Passa longe de:</strong> ${signo.incompativel}</p>
+            </div>
+        </details>
+    `);
+
+    // Seção 4 (Ama/Odeia)
+    finalHTML += renderSection("secao-4", "🎭 3 Coisas que Ama & Odeia", signo => `
+        <details>
+            <summary>${signo.emoji} O Céu e o Inferno de ${signo.nome}</summary>
+            <div class="content-box">
+                <p style="color:#2ecc71;"><strong>😍 AMA:</strong> ${signo.ama.join(' • ')}</p>
+                <hr style="border:0; border-top:1px dashed #ddd; margin:10px 0;">
+                <p style="color:#e74c3c;"><strong>🤬 ODEIA:</strong> ${signo.odeia.join(' • ')}</p>
+            </div>
+        </details>
+    `);
+
+    appContent.innerHTML = finalHTML;
+
+    // Popula o select de planetas
+    signosData.forEach(signo => {
+        let option = document.createElement('option');
+        option.value = signo.nome;
+        option.textContent = `${signo.emoji} ${signo.nome}`;
+        selectSignoPlaneta.appendChild(option);
+    });
+
+    // Função Combinar
+    function combinarPlanetaSigno() {
+        const planeta = document.getElementById('select-planeta').value;
+        const signo = document.getElementById('select-signo-planeta').value;
+        const resultDiv = document.getElementById('resultado-planeta');
+
+        if(!planeta || !signo) {
+            alert("Ei apressadinho! Escolha o planeta e o signo primeiro! 🌌");
+            return;
+        }
+
+        resultDiv.style.display = 'block';
+        resultDiv.innerHTML = `🌟 <strong>BINGO ASTROLÓGICO!</strong><br><br>Quando o <strong>${planeta}</strong> cai no signo de <strong>${signo}</strong>, o universo avisa: a área da sua vida controlada por esse planeta ganha 100% da personalidade doida de ${signo}. É como dar um megafone na mão desse signo!`;
+    }
+</script>
+
+</body>
+</html>
